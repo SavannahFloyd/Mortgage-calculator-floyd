@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mortgage-calculator-floyd</string>
+    <string name="title_activity_payment_summary">paymentSummary</string>
 </resources>
