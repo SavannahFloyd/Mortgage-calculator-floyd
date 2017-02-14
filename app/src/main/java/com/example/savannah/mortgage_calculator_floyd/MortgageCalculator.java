@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import java.util.Calendar;
-import java.util.Date;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -57,6 +56,7 @@ public class MortgageCalculator extends AppCompatActivity {
         propertyTaxEdit.setText(propertyTax.toString());
         homeInsPerYearEdit.setText(homeInsPerYear.toString());
         monthlyHOAAmountEdit.setText(monthlyHOAAmount.toString());
+
         mortgageSummaryButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -118,9 +118,61 @@ public class MortgageCalculator extends AppCompatActivity {
         monthlyHOAAmountEdit.setText(monthlyHOAAmount.toString());
     }
     private String[] Calculations() {
+        String[] rtrnVal = new String[8];
+        getValues();
+
+        Double totalCost = loanAmount.doubleValue();
+        Double totalInterest;
+        Double paid = 0.00;
+        Double monthlyMortgage;
+        Double totalPaymentMonth;
+        Double yearTax;
+        Double taxes;
+        Double HOA;
+        Calendar calendar = Calendar.getInstance();
+        int numYears = calendar.get(Calendar.YEAR)-startDate.intValue();
+        int month = calendar.get(Calendar.MONTH);
+
+        for(int i = 0; i<loanTerm.intValue();i++){
+            totalCost = totalCost + totalCost*(interestRate.doubleValue()/100);
+            totalCost = totalCost.doubleValue();
+        }
+        rtrnVal[0] = totalCost.toString();
+
+        totalInterest = totalCost - loanAmount.doubleValue();
+        rtrnVal[1] = totalInterest.toString();
+
+        yearTax = homeValue*propertyTax.doubleValue()/100;
+        rtrnVal[2] = yearTax.toString();
+
+        monthlyMortgage = totalCost/loanTerm.doubleValue()/12;
+        rtrnVal[3] = monthlyMortgage.toString();
+
+        totalPaymentMonth = monthlyMortgage + monthlyHOAAmount.doubleValue()
+                +(yearTax/12)+(homeInsPerYear.doubleValue()/12);
+        rtrnVal[4] = totalPaymentMonth.toString();
+
+        paid = totalPaymentMonth*numYears*12+(totalPaymentMonth*month);
+        rtrnVal[5] = paid.toString();
+
+        taxes = yearTax*numYears;
+        rtrnVal[6] = taxes.toString();
+
+        HOA = monthlyHOAAmount.doubleValue()*numYears*12+(monthlyHOAAmount.doubleValue()*month);
+        rtrnVal[7] = HOA.toString();
+
+        return rtrnVal;
 
     }
     private void getValues(){
+        homeValue = Float.parseFloat(homeValueEdit.getText().toString());
+        loanAmount = Float.parseFloat(loanAmountEdit.getText().toString());
+        interestRate = Float.parseFloat(interestRateEdit.getText().toString());
+        loanTerm = Float.parseFloat(loanTermEdit.getText().toString());
+        startDate = Float.parseFloat(startDateEdit.getText().toString());
+        propertyTax = Float.parseFloat(propertyTaxEdit.getText().toString());
+        homeInsPerYear = Float.parseFloat(homeInsPerYearEdit.getText().toString());
+        monthlyHOAAmount = Float.parseFloat(monthlyHOAAmountEdit.getText().toString());
 
     }
 }

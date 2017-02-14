@@ -28,7 +28,7 @@
         android:layout_below="@+id/editText"
         android:layout_alignEnd="@+id/editText"
         android:id="@+id/editText2"
-        android:text="Loan Amount" />
+        android:text="@string/homeValue" />
 
 
     <EditText
