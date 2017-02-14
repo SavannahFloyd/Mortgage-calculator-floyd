@@ -99,7 +99,7 @@ public class MortgageCalculator extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        homeValue = savedInstanceState.getFloat("homeValue");
+        homeValue = savedInstanceState.getFloat("Home Value");
         loanAmount = savedInstanceState.getFloat("loanAmount");
         interestRate = savedInstanceState.getFloat("interestRate");
         loanTerm = savedInstanceState.getFloat("loanTerm");
