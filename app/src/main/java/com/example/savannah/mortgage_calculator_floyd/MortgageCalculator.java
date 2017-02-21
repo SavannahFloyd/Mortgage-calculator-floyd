@@ -19,14 +19,14 @@ public class MortgageCalculator extends AppCompatActivity {
     private Float homeInsPerYear = new Float(0);
     private Float monthlyHOAAmount= new Float(0);
 
-    private EditText homeValueEdit;
-    private EditText loanAmountEdit;
-    private EditText interestRateEdit;
-    private EditText loanTermEdit;
-    private EditText startDateEdit;
-    private EditText propertyTaxEdit;
-    private EditText homeInsPerYearEdit;
-    private EditText monthlyHOAAmountEdit;
+    private TextView homeValueEdit;
+    private TextView loanAmountEdit;
+    private TextView interestRateEdit;
+    private TextView loanTermEdit;
+    private TextView startDateEdit;
+    private TextView propertyTaxEdit;
+    private TextView homeInsPerYearEdit;
+    private TextView monthlyHOAAmountEdit;
 
     private Button mortgageSummaryButton;
     private Button paymentSummaryButton;
@@ -36,19 +36,19 @@ public class MortgageCalculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mortgage_calculator);
 
-        homeValueEdit = (EditText)findViewById(R.id.editText);
-        loanAmountEdit = (EditText)findViewById(R.id.editText2);
-        interestRateEdit = (EditText)findViewById(R.id.editText3);
-        loanTermEdit = (EditText)findViewById(R.id.editText4);
-        startDateEdit = (EditText)findViewById(R.id.editText5);
-        propertyTaxEdit = (EditText)findViewById(R.id.editText6);
-        homeInsPerYearEdit = (EditText)findViewById(R.id.editText7);
-        monthlyHOAAmountEdit = (EditText)findViewById(R.id.editText8);
+        homeValueEdit = (TextView)findViewById(R.id.homeValue);
+        loanAmountEdit = (EditText)findViewById(R.id.loanAmount);
+        interestRateEdit = (EditText)findViewById(R.id.interestRate);
+        loanTermEdit = (EditText)findViewById(R.id.loanTerm);
+        startDateEdit = (EditText)findViewById(R.id.startDate);
+        propertyTaxEdit = (EditText)findViewById(R.id.propertyTax);
+        homeInsPerYearEdit = (EditText)findViewById(R.id.homeInsPerYear);
+        monthlyHOAAmountEdit = (EditText)findViewById(R.id.monthlyHOAAmount);
 
-        mortgageSummaryButton = (Button)findViewById(R.id.button3);
-        paymentSummaryButton = (Button)findViewById(R.id.button);
+        mortgageSummaryButton = (Button)findViewById(R.id.mortgageSummaryButton);
+        paymentSummaryButton = (Button)findViewById(R.id.paymentSummaryButton);
 
-        homeValueEdit.setText(homeValue.toString());
+        //homeValueEdit.setText(homeValue.toString());
         loanAmountEdit.setText(loanAmount.toString());
         interestRateEdit.setText(interestRate.toString());
         loanTermEdit.setText(loanTerm.toString());
